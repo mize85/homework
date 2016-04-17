@@ -16,6 +16,6 @@ frontend/libpeerconnection.log
 frontend/npm-debug.log
 frontend/testem.log
 
-homework/db.sqlite3
+backend/homework/db.sqlite3
 *.pyc
 .idea
