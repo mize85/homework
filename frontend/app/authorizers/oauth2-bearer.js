@@ -10,7 +10,7 @@ OAuth2Bearer.extend({
     authorize(data, block) {
         const accessToken = data['token'];
         if (!Ember.isEmpty(accessToken)) {
-            block('Authorization', `Bearer ${accessToken}`);
+            block('Authorization', `Token ${accessToken}`);
         }
     }
 

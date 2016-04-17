@@ -33,7 +33,8 @@ urlpatterns = [
     url(r'^'+API_PREFIX+'/'+API_VERSION+'/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^'+API_PREFIX+'/'+API_VERSION+'/api-token-auth/', views.obtain_auth_token)
+    url(r'^'+API_PREFIX+'/'+API_VERSION+'/api-token-auth/', views.obtain_auth_token),
+    url(r'^'+API_PREFIX+'/'+API_VERSION+'/auth/', include('djoser.urls')),
 ]
 
 

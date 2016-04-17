@@ -1,1 +1,1 @@
-from homework.settings.base import *
+from homework.settings.local import *

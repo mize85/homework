@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6!fsp2^beb%(j&l7+(tvg5xfu^c^e37&6nw1mp0zlnsz8l04s0'
+#SECRET_KEY = '6!fsp2^beb%(j&l7+(tvg5xfu^c^e37&6nw1mp0zlnsz8l04s0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'djoser',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -126,7 +127,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticated'
     ],
     'PAGINATE_BY': 10,
     'PAGINATE_BY_PARAM': 'page_size',
@@ -149,8 +150,20 @@ REST_FRAMEWORK = {
     'DEFAULT_METADATA_CLASS': 'rest_framework_json_api.metadata.JSONAPIMetadata',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     )
 }
 
 JSON_API_FORMAT_KEYS = 'camelize'
+
+
+
+DJOSER = {
+    'DOMAIN': 'localhost:8000',
+    'SITE_NAME': 'Frontend',
+    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'PASSWORD_VALIDATORS': [],
+    'SERIALIZERS': {},
+}
