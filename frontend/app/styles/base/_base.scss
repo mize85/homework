@@ -1,5 +1,18 @@
+$transition-duration: 0.5s;
+
+html {
+
+}
+
+
 body{
-    background: #ebeef0;
+  background: #ebeef0;
+  height: 100vh;
+  margin: 0;
+  background-size: cover;
+  transition: background $transition-duration ease-in-out;
+  -moz-transition: background $transition-duration ease-in-out;
+  -webkit-transition: background $transition-duration ease-in-out;
 }
 
 .pointer{
