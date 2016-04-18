@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
@@ -17,7 +16,7 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
         if (this.isSuccess(status, headers, payload)) {
             return payload;
         } else if (this.isInvalid(status, headers, payload)) {
-            return new InvalidError(payload.errors);
+            return new DS.InvalidError(payload.errors);
         } else if (status === 403) {
 
             var session = this.container.lookup('controller:application').get('session');
