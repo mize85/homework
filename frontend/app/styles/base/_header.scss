@@ -1,4 +1,4 @@
-.tph-Header {
+.header {
     padding: 60px 0;
     background: #441678;
     background: linear-gradient(135deg, #2f8052 10%, #86e67d 100%);
@@ -7,4 +7,25 @@
     color: #fff;
     font-smooth: auto;
     -webkit-font-smoothing: auto;
+
+
+  .sub-heading {
+    color: rgba(255,255,255,.8);
+    font-weight: 200;
+    font-size: 22px;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .heading{
+    font-weight: 700;
+    margin-top: 0;
+    overflow: hidden;
+    font-size: 63px;
+  }
+
+  .slim-heading{
+    font-weight: 100;
+  }
+
 }

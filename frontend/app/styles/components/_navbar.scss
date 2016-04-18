@@ -1,3 +1,5 @@
-.navbar-default {
-  background-color: white;
+.navbar-nav{
+  li{
+    @extend .pointer;
+  }
 }

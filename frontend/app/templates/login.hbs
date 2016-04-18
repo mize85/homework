@@ -1,5 +1,6 @@
 <div class="container">
-    <form class="form-horizontal" {{action 'authenticate' on='submit'}}>
+    <div class="well bs-component">
+        <form class="form-horizontal" {{action 'authenticate' on='submit'}}>
 
         <div class="form-group">
             <label for="identification" class="col-sm-2 control-label">Email</label>
@@ -27,5 +28,7 @@
             {{/each}}
         {{/if}}
     </form>
+    </div>
+
 </div>
 
