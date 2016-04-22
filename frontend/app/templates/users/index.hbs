@@ -13,7 +13,9 @@
     <div class="row">
         {{#each model as |user|}}
           <div class="col-md-3">
-            {{user-widget model=user}}
+              {{#link-to 'users.user' user}}
+                {{user-widget model=user}}
+              {{/link-to}}
           </div>
         {{/each}}
     </div>

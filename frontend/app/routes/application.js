@@ -6,6 +6,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   randomImage: Ember.inject.service(),
 
   activate(){
-     this.get("randomImage").shuffle();
+     //this.get("randomImage").shuffle();
   }
 });
