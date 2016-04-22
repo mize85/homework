@@ -1,16 +1,6 @@
 import Ember from 'ember';
 
 
-const topics = [
-  'nature',
-  'space',
-  'water',
-  'mountains',
-  'sun',
-  'architecture',
-  'beach'
-];
-
 export default Ember.Service.extend({
 
   topics: null,
@@ -55,7 +45,7 @@ export default Ember.Service.extend({
         url = randomPhoto.media.m.replace("_m.jpg", "_c.jpg");
 
         // preload
-        preloadImg = new Image;
+        preloadImg = new Image();
 
         preloadImg.onload = function () {
           // image  has been loaded
