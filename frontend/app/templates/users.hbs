@@ -1,8 +1,10 @@
 {{page-toolbar pageTitle='Users'}}
 {{#paper-content flex=true scroll-y=true layout-padding=true}}
   {{#doc-content}}
-    {{#each model as |user|}}
-      {{user.username}}
-    {{/each}}
+    <div class="layout-row layout-xs-column">
+         {{#each model as |user|}}
+          {{user-card model=user class="layout-column flex-xs flex-gt-xs-50"}}
+        {{/each}}
+    </div>
   {{/doc-content}}
 {{/paper-content}}

@@ -3,21 +3,23 @@
     open=isSidenavOpen onToggle=(action (mut isSidenavOpen))}}
     {{#paper-toolbar class="site-content-toolbar" tall=true}}
       <div class="logo layout-column layout-align-center-center">
-        <img src="ember-logo-white.png">
+        {{#link-to 'index'}}
+           <img src="ember-logo-white.png">
+        {{/link-to}}
       </div>
     {{/paper-toolbar}}
 
     {{#paper-content}}
 
-      {{#paper-list}}
-        {{#menu-item active=(is-active "index" currentRouteName) onClick=(transition-to "index")}}Index{{/menu-item}}
-        {{#menu-item active=(is-active "users" currentRouteName) onClick=(transition-to "users")}}Users{{/menu-item}}
-      {{/paper-list}}
-
       {{#if session.isAuthenticated}}
-        <a {{action 'invalidateSession'}}>Logout</a>
+      {{#paper-list}}
+        {{#menu-item active=(is-active "users" currentRouteName) onClick=(transition-to "users")}}Users{{/menu-item}}
+        {{#menu-item active=(is-active "index" currentRouteName) onClick=(action 'invalidateSession')}}Logout{{/menu-item}}
+      {{/paper-list}}
     {{else}}
-        {{#link-to 'login'}}Login{{/link-to}}
+        {{#paper-list}}
+          {{#menu-item active=false onClick=(transition-to "login")}}Login{{/menu-item}}
+        {{/paper-list}}
     {{/if}}
 
 
