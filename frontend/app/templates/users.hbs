@@ -1,5 +1,8 @@
 {{page-toolbar pageTitle='Users'}}
-
-{{#each model as |user|}}
-    {{user.username}}
-{{/each}}
+{{#paper-content flex=true scroll-y=true layout-padding=true}}
+  {{#doc-content}}
+    {{#each model as |user|}}
+      {{user.username}}
+    {{/each}}
+  {{/doc-content}}
+{{/paper-content}}

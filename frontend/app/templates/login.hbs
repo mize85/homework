@@ -1,16 +1,23 @@
 {{page-toolbar pageTitle='Login'}}
 
+{{#paper-content flex=true scroll-y=true layout-padding=true}}
+{{#doc-content}}
+  {{#paper-form onSubmit=(action "authenticate") as |form|}}
+    <div class="layout-row">
+      <div class="layout-column flex-50">
+        {{form.input label="Enter Login" value=identification onChange=(action (mut identification)) required=true}}
+        {{form.input label="Password" type="password" value=password onChange=(action (mut password))}}
+      </div>
+    </div>
+    <div class="layout-row">
+      {{#form.submit-button raised=true primary=true}}Login{{/form.submit-button}}
+    </div>
 
-{{!-- app/templates/login.hbs --}}
-<form {{action 'authenticate' on='submit'}}>
-    <label for="identification">Login</label>
-    {{input id='identification' placeholder='Enter Login' value=identification}}
-    <label for="password">Password</label>
-    {{input id='password' placeholder='Enter Password' type='password' value=password}}
-    <button type="submit">Login</button>
     {{#if errors}}
-        {{#each errors.non_field_errors as |e|}}
-        <p> {{e}} </p>
-        {{/each}}
-    {{/if}}
-</form>
+      {{#each errors.non_field_errors as |e|}}
+          <p> {{e}} </p>
+          {{/each}}
+      {{/if}}
+  {{/paper-form}}
+  {{/doc-content}}
+{{/paper-content}}
