@@ -1,16 +1,30 @@
-<h2 id="title">Welcome to Ember</h2>
+{{#paper-sidenav-container class="site-nav-container"}}
+  {{#paper-sidenav class="md-whiteframe-z2 site-sidenav" lockedOpen="gt-sm"
+    open=isSidenavOpen onToggle=(action (mut isSidenavOpen))}}
+    {{#paper-toolbar class="site-content-toolbar" tall=true}}
+      <div class="logo layout-column layout-align-center-center">
+        <img src="ember-logo-white.png">
+      </div>
+    {{/paper-toolbar}}
 
-{{#link-to 'users'}}users{{/link-to}}
+    {{#paper-content}}
 
-<div class="menu">
-    …
-    {{#if session.isAuthenticated}}
+      {{#paper-list}}
+        {{#menu-item active=(is-active "index" currentRouteName) onClick=(transition-to "index")}}Index{{/menu-item}}
+        {{#menu-item active=(is-active "users" currentRouteName) onClick=(transition-to "users")}}Users{{/menu-item}}
+      {{/paper-list}}
+
+      {{#if session.isAuthenticated}}
         <a {{action 'invalidateSession'}}>Logout</a>
     {{else}}
         {{#link-to 'login'}}Login{{/link-to}}
     {{/if}}
-</div>
-<div class="main">
-    {{outlet}}
-</div>
 
+
+    {{/paper-content}}
+  {{/paper-sidenav}}
+
+  <div class="flex layout-column" tabindex="-1" role="main">
+    {{outlet}}
+  </div>
+{{/paper-sidenav-container}}
