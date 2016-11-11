@@ -1,5 +1,13 @@
-{{page-toolbar pageTitle='Index'}}
+{{#paper-content flex=true scroll-y=true class="layout-padding page-index"}}
+    {{#doc-content}}
+       <div class="logo layout-column layout-align-center-center">
+        {{#link-to 'index' tagName="span"}}
+           <img src="ember-logo-white.png">
+        {{/link-to}}
+      </div>
 
-{{#paper-content flex=true scroll-y=true class="layout-padding"}}
-  content
+      <h1>Pi-Pa-Prototype</h1>
+
+
+    {{/doc-content}}
 {{/paper-content}}

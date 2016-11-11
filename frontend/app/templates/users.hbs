@@ -1,10 +1,21 @@
-{{page-toolbar pageTitle='Users'}}
 {{#paper-content flex=true scroll-y=true layout-padding=true}}
   {{#doc-content}}
-    <div class="layout-row layout-xs-column">
-         {{#each model as |user|}}
-          {{user-card model=user class="layout-column flex-xs flex-gt-xs-50"}}
+      <div class="layout-row layout-wrap layout-xs-column">
+        {{#each model as |user|}}
+          {{user-card model=user class="layout-column flex-xs flex-gt-xs-50 flex-gt-sm-33"}}
         {{/each}}
-    </div>
+
+        {{#each model as |user|}}
+          {{user-card model=user class="layout-column flex-xs flex-gt-xs-50 flex-gt-sm-33"}}
+        {{/each}}
+
+        {{#each model as |user|}}
+          {{user-card model=user class="layout-column flex-xs flex-gt-xs-50 flex-gt-sm-33"}}
+        {{/each}}
+
+        {{#each model as |user|}}
+          {{user-card model=user class="layout-column flex-xs flex-gt-xs-50 flex-gt-sm-33"}}
+        {{/each}}
+      </div>
   {{/doc-content}}
 {{/paper-content}}

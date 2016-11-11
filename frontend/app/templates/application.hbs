@@ -1,9 +1,9 @@
 {{#paper-sidenav-container class="site-nav-container"}}
-  {{#paper-sidenav class="md-whiteframe-z2 site-sidenav" lockedOpen="gt-sm"
+  {{#paper-sidenav class="md-whiteframe-z2 site-sidenav" lockedOpen=false
     open=isSidenavOpen onToggle=(action (mut isSidenavOpen))}}
     {{#paper-toolbar class="site-content-toolbar" tall=true}}
       <div class="logo layout-column layout-align-center-center">
-        {{#link-to 'index'}}
+        {{#link-to 'index' tagName="span"}}
            <img src="ember-logo-white.png">
         {{/link-to}}
       </div>
@@ -27,6 +27,7 @@
   {{/paper-sidenav}}
 
   <div class="flex layout-column" tabindex="-1" role="main">
-    {{outlet}}
+      {{page-toolbar pageTitle=currentRouteName}}
+      {{liquid-outlet}}
   </div>
 {{/paper-sidenav-container}}
