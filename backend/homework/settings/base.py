@@ -28,20 +28,45 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+SHARED_APPS = (
+    'tenant_schemas',  # mandatory
+    'customers', # you must list the app where your tenant model resides in
 
-INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
-    'rest_framework.authtoken'
-]
+    'rest_framework.authtoken',
+
+    # everything below here is optional
+    'django.contrib.auth',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.admin',
+)
+
+TENANT_APPS = (
+
+
+    'django.contrib.contenttypes',
+
+    # your tenant-specific apps
+    #'myapp.hotels',
+    #'myapp.houses',
+)
+
+TENANT_MODEL = "customers.Client" # app.Model
+
+# Application definition
+INSTALLED_APPS = list(set(SHARED_APPS + TENANT_APPS))
 
 MIDDLEWARE_CLASSES = [
+    'tenant_schemas.middleware.TenantMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,6 +76,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'homework.urls'
 
@@ -78,11 +104,20 @@ WSGI_APPLICATION = 'homework.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'tenant_schemas.postgresql_backend',
+        'NAME': 'homework',
+        'USER': 'homework',
+        'PASSWORD': 'homework',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
+DATABASE_ROUTERS = (
+    'tenant_schemas.routers.TenantSyncRouter',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
