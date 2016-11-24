@@ -1,5 +1,8 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+
+const {getOwner} = Ember;
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     coalesceFindRequests: true,
@@ -19,12 +22,12 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
             return new DS.InvalidError(payload.errors);
         } else if (status === 403) {
 
-            var session = this.container.lookup('controller:application').get('session');
+            const session = getOwner(this).lookup('controller:application').get('session');
 
             if (session.get('isAuthenticated')) {
                 return session.invalidate();
             } else {
-                return this.container.lookup('controller:application').transitionToRoute('login');
+                return getOwner(this).lookup('controller:application').transitionToRoute('login');
             }
         }
         return this._super(...arguments);

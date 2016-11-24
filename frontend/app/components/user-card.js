@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({
-  randomImage: Ember.computed('model.id', function() {
+const {Component, computed} = Ember;
+
+export default Component.extend({
+  randomImage: computed('model.id', function() {
     return `http://lorempixel.com/output/people-q-g-640-480-${this.get("model.id")}.jpg`;
   })
 });
