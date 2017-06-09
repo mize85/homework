@@ -1,7 +1,6 @@
 {{#paper-content flex=true scroll-y=true layout-padding=true}}
   {{#doc-content}}
       {{#paper-form onSubmit=(action "authenticate") as |form|}}
-        <form {{action form.onSubmit on="submit"}}>
           <div class="layout-row">
             <div class="layout-column flex-50">
               {{form.input label="Username" value=identification onChange=(action (mut identification))}}
@@ -17,7 +16,6 @@
                 <p> {{e}} </p>
               {{/each}}
           {{/if}}
-        </form>
       {{/paper-form}}
   {{/doc-content}}
 {{/paper-content}}
